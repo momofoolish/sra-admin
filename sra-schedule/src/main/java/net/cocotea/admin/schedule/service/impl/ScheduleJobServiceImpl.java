@@ -2,6 +2,9 @@ package net.cocotea.admin.schedule.service.impl;
 
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.lang.UUID;
+import net.cocotea.admin.common.enums.ActiveEnum;
+import net.cocotea.admin.common.enums.DeleteStatusEnum;
+import net.cocotea.admin.common.model.BusinessException;
 import net.cocotea.admin.schedule.entity.ScheduleJob;
 import net.cocotea.admin.schedule.param.ScheduleJobAddParam;
 import net.cocotea.admin.schedule.param.ScheduleJobPageParam;
@@ -9,11 +12,9 @@ import net.cocotea.admin.schedule.param.ScheduleJobUpdateParam;
 import net.cocotea.admin.schedule.service.IScheduleJobRegistryService;
 import net.cocotea.admin.schedule.service.IScheduleJobService;
 import net.cocotea.admin.schedule.vo.ScheduleJobVO;
-import net.cocotea.admin.common.enums.ActiveEnum;
-import net.cocotea.admin.common.enums.DeleteStatusEnum;
-import net.cocotea.admin.common.model.BusinessException;
 import org.sagacity.sqltoy.dao.SqlToyLazyDao;
 import org.sagacity.sqltoy.model.Page;
+import org.springframework.scheduling.support.CronExpression;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,6 +40,9 @@ public class ScheduleJobServiceImpl implements IScheduleJobService {
     @Override
     public boolean add(ScheduleJobAddParam param) throws BusinessException {
         ScheduleJob scheduleJob = Convert.convert(ScheduleJob.class, param);
+        if (!CronExpression.isValidExpression(scheduleJob.getCornExpression())) {
+            throw new BusinessException("非法Cron表达式，请检查表达式格式");
+        }
         Object save = sqlToyLazyDao.save(scheduleJob);
         try {
             scheduleJobRegistryService.flushJob(scheduleJob);
@@ -59,9 +63,13 @@ public class ScheduleJobServiceImpl implements IScheduleJobService {
         return sqlToyLazyDao.updateAll(scheduleJobs) > 0;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public boolean update(ScheduleJobUpdateParam param) throws BusinessException {
         ScheduleJob scheduleJob = Convert.convert(ScheduleJob.class, param);
+        if (!CronExpression.isValidExpression(scheduleJob.getCornExpression())) {
+            throw new BusinessException("非法Cron表达式，请检查表达式格式");
+        }
         Long row = sqlToyLazyDao.update(scheduleJob);
         if (row > 0) {
             try {
