@@ -31,21 +31,21 @@ public class SysMenuController {
 
     @SaCheckRole(value = {"role:super:admin", "role:simple:admin"}, mode = SaMode.OR)
     @PostMapping("add")
-    public ApiResult<String> add(@Valid @RequestBody SysMenuAddParam param) throws BusinessException {
+    public ApiResult<?> add(@Valid @RequestBody SysMenuAddParam param) throws BusinessException {
         boolean b = sysMenuService.add(param);
         return ApiResult.flag(b);
     }
 
     @SaCheckRole(value = {"role:super:admin", "role:simple:admin"}, mode = SaMode.OR)
     @PostMapping("deleteBatch")
-    public ApiResult<String> deleteBatch(@Valid @RequestBody List<String> idList) throws BusinessException {
+    public ApiResult<?> deleteBatch(@Valid @RequestBody List<String> idList) throws BusinessException {
         boolean b = sysMenuService.deleteBatch(idList);
         return ApiResult.flag(b);
     }
 
     @SaCheckRole(value = {"role:super:admin", "role:simple:admin"}, mode = SaMode.OR)
     @PostMapping("update")
-    public ApiResult<String> update(@Valid @RequestBody SysMenuUpdateParam param) throws BusinessException {
+    public ApiResult<?> update(@Valid @RequestBody SysMenuUpdateParam param) throws BusinessException {
         boolean b = sysMenuService.update(param);
         return ApiResult.flag(b);
     }

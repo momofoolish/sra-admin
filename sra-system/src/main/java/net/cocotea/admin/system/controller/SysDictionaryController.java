@@ -29,21 +29,21 @@ public class SysDictionaryController {
 
     @PostMapping("/add")
     @SaCheckPermission("system:dictionary:add")
-    public ApiResult<String> add(@Valid @RequestBody SysDictionaryAddParam param) throws BusinessException {
+    public ApiResult<?> add(@Valid @RequestBody SysDictionaryAddParam param) throws BusinessException {
         boolean b = sysDictionaryService.add(param);
         return ApiResult.flag(b);
     }
 
     @PostMapping("/deleteBatch")
     @SaCheckPermission("system:dictionary:deleteBatch")
-    public ApiResult<String> deleteBatch(@Valid @RequestBody List<String> list) throws BusinessException {
+    public ApiResult<?> deleteBatch(@Valid @RequestBody List<String> list) throws BusinessException {
         boolean b = sysDictionaryService.deleteBatch(list);
         return ApiResult.flag(b);
     }
 
     @PostMapping("/update")
     @SaCheckPermission("system:dictionary:update")
-    public ApiResult<String> update(@Valid @RequestBody SysDictionaryUpdateParam param) throws BusinessException {
+    public ApiResult<?> update(@Valid @RequestBody SysDictionaryUpdateParam param) throws BusinessException {
         boolean b = sysDictionaryService.update(param);
         return ApiResult.flag(b);
     }
