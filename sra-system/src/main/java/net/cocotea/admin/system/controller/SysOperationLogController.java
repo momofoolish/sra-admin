@@ -39,7 +39,7 @@ public class SysOperationLogController {
 
     @SaCheckRole(value = {"role:super:admin", "role:simple:admin"}, mode = SaMode.OR)
     @PostMapping("/deleteBatch")
-    public ApiResult<String> deleteBatch(@RequestBody List<String> ids) throws BusinessException {
+    public ApiResult<?> deleteBatch(@RequestBody List<String> ids) throws BusinessException {
         boolean b = sysOperationLogService.deleteBatch(ids);
         return ApiResult.flag(b);
     }

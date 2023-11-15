@@ -30,35 +30,35 @@ public class SysRoleController {
 
     @SaCheckRole(value = {"role:super:admin", "role:simple:admin"}, mode = SaMode.OR)
     @PostMapping("/add")
-    public ApiResult<String> add(@Valid @RequestBody SysRoleAddParam param) throws BusinessException {
+    public ApiResult<?> add(@Valid @RequestBody SysRoleAddParam param) throws BusinessException {
         boolean b = sysRoleService.add(param);
         return ApiResult.flag(b);
     }
 
     @SaCheckRole(value = {"role:super:admin", "role:simple:admin"}, mode = SaMode.OR)
     @PostMapping("/update")
-    public ApiResult<String> update(@Valid @RequestBody SysRoleUpdateParam param) throws BusinessException {
+    public ApiResult<?> update(@Valid @RequestBody SysRoleUpdateParam param) throws BusinessException {
         boolean b = sysRoleService.update(param);
         return ApiResult.flag(b);
     }
 
     @SaCheckRole(value = {"role:super:admin", "role:simple:admin"}, mode = SaMode.OR)
     @PostMapping("/delete/{id}")
-    public ApiResult<String> delete(@PathVariable String id) throws BusinessException {
+    public ApiResult<?> delete(@PathVariable String id) throws BusinessException {
         boolean b = sysRoleService.delete(id);
         return ApiResult.flag(b);
     }
 
     @SaCheckRole(value = {"role:super:admin", "role:simple:admin"}, mode = SaMode.OR)
     @PostMapping("/deleteBatch")
-    public ApiResult<String> deleteBatch(@RequestBody List<String> idList) throws BusinessException {
+    public ApiResult<?> deleteBatch(@RequestBody List<String> idList) throws BusinessException {
         boolean b = sysRoleService.deleteBatch(idList);
         return ApiResult.flag(b);
     }
 
     @SaCheckRole(value = {"role:super:admin", "role:simple:admin"}, mode = SaMode.OR)
     @PostMapping("/grantPermissionsByRoleId")
-    public ApiResult<String> grantPermissionsByRoleId(@Valid @RequestBody List<SysRoleMenuVO> param) throws BusinessException {
+    public ApiResult<?> grantPermissionsByRoleId(@Valid @RequestBody List<SysRoleMenuVO> param) throws BusinessException {
         boolean b = sysRoleService.grantPermissionsByRoleId(param);
         return ApiResult.flag(b);
     }

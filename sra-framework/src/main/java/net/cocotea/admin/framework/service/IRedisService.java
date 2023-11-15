@@ -49,13 +49,6 @@ public interface IRedisService {
     void delete(String key);
 
     /**
-     * 修改值
-     * @param key k
-     * @param value v
-     */
-    void set(String key, String value);
-
-    /**
      * 获取值
      *
      * @param key k

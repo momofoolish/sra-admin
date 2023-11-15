@@ -1,7 +1,6 @@
 package net.cocotea.admin.common.model;
 
 import net.cocotea.admin.common.enums.ApiResultEnum;
-import net.cocotea.admin.common.constant.CharConstant;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -33,7 +32,7 @@ public class ApiResult<T> implements Serializable {
      * @param b 布尔值
      * @return 结果集
      */
-    public static ApiResult<String> flag(Boolean b) {
+    public static ApiResult<?> flag(Boolean b) {
         if (b) {
             return ok();
         } else {
@@ -56,8 +55,8 @@ public class ApiResult<T> implements Serializable {
      *
      * @return 成功结果
      */
-    public static ApiResult<String> ok() {
-        return new ApiResult<>(ApiResultEnum.SUCCESS.getCode(), CharConstant.EMPTY_STRING, ApiResultEnum.SUCCESS.getDesc());
+    public static ApiResult<?> ok() {
+        return new ApiResult<>(ApiResultEnum.SUCCESS.getCode(), null, ApiResultEnum.SUCCESS.getDesc());
     }
 
     /**
@@ -65,8 +64,8 @@ public class ApiResult<T> implements Serializable {
      *
      * @return 错误结果
      */
-    public static ApiResult<String> error() {
-        return new ApiResult<>(ApiResultEnum.ERROR.getCode(), CharConstant.EMPTY_STRING, ApiResultEnum.ERROR.getDesc());
+    public static ApiResult<?> error() {
+        return new ApiResult<>(ApiResultEnum.ERROR.getCode(), null, ApiResultEnum.ERROR.getDesc());
     }
 
     /**
@@ -96,8 +95,8 @@ public class ApiResult<T> implements Serializable {
      * @param message 通知消息
      * @return 成功结果
      */
-    public static ApiResult<String> error(String message) {
-        return error(CharConstant.EMPTY_STRING, message);
+    public static ApiResult<?> error(String message) {
+        return error(null, message);
     }
 
     /**
@@ -107,8 +106,8 @@ public class ApiResult<T> implements Serializable {
      * @param message 通知消息
      * @return 成功结果
      */
-    public static ApiResult<String> error(Integer errorCode, String message) {
-        return new ApiResult<>(errorCode, CharConstant.EMPTY_STRING, message);
+    public static ApiResult<?> error(Integer errorCode, String message) {
+        return new ApiResult<>(errorCode, null, message);
     }
 
     /**

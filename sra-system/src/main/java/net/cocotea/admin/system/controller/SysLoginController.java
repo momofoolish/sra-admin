@@ -40,7 +40,7 @@ public class SysLoginController {
     }
 
     @PostMapping("/logout")
-    public ApiResult<String> logout() {
+    public ApiResult<?> logout() {
         if ( StpUtil.isLogin() ) {
             // 删除权限缓存
             redisService.delete(String.format(RedisKey.USER_PERMISSION, StpUtil.getLoginId()));

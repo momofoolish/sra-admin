@@ -32,28 +32,28 @@ public class SysUserController {
 
     @SaCheckRole(value = {"role:super:admin", "role:simple:admin"}, mode = SaMode.OR)
     @PostMapping("/add")
-    public ApiResult<String> add(@Valid @RequestBody SysUserAddParam param) throws BusinessException {
+    public ApiResult<?> add(@Valid @RequestBody SysUserAddParam param) throws BusinessException {
         boolean b = sysUserService.add(param);
         return ApiResult.flag(b);
     }
 
     @SaCheckPermission("system:user:update")
     @PostMapping("/update")
-    public ApiResult<String> update(@Valid @RequestBody SysUserUpdateParam param) throws BusinessException {
+    public ApiResult<?> update(@Valid @RequestBody SysUserUpdateParam param) throws BusinessException {
         boolean b = sysUserService.update(param);
         return ApiResult.flag(b);
     }
 
     @SaCheckRole(value = {"role:super:admin", "role:simple:admin"}, mode = SaMode.OR)
     @PostMapping("/delete/{id}")
-    public ApiResult<String> delete(@PathVariable String id) throws BusinessException {
+    public ApiResult<?> delete(@PathVariable String id) throws BusinessException {
         boolean b = sysUserService.delete(id);
         return ApiResult.flag(b);
     }
 
     @SaCheckRole(value = {"role:super:admin", "role:simple:admin"}, mode = SaMode.OR)
     @PostMapping("/deleteBatch")
-    public ApiResult<String> deleteBatch(@RequestBody List<String> idList) throws BusinessException {
+    public ApiResult<?> deleteBatch(@RequestBody List<String> idList) throws BusinessException {
         boolean b = sysUserService.deleteBatch(idList);
         return ApiResult.flag(b);
     }
