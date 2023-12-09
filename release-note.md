@@ -1,13 +1,16 @@
 ### 更新日志
 
 
+#### v1.3.2
+1. 数据库脚本任务调度主表补充字段CONCURRENT_EXEC
+2. 修复WebMvcConfig配置类中时间格式化为12小时制问题
+3. 补充项目变更文档
+
+
 #### v1.3.1
 1. 优化ApiResult类，不返回空字符串
 2. 接口访问限制BUG修复
 3. 移除IRedisService的set方法
-4. 数据库脚本任务调度主表补充字段CONCURRENT_EXEC
-5. 修复WebMvcConfig配置类中时间格式化为12小时制问题
-6. 补充项目变更文档
 
 
 #### v1.3.0
