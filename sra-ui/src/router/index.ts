@@ -29,7 +29,7 @@ router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized):b
         return {path: "/admin/home"};
     }
 
-    if (userInfo && userInfo.menuList) {
+    if (userInfo && userInfo.menuList && userInfo.menuList.length > 0) {
         let hasMenu: boolean = findMenu(userInfo.menuList, to.path);
         // 没有这个菜单，跳转首页
         if (!hasMenu) {

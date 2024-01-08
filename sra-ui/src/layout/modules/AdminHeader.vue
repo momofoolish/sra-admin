@@ -127,7 +127,15 @@ const clickToGo = (url: string, name: string) => {
 const doLogout = () => {
   reqCommonFeedback(logout(), () => {
     // 清空用户信息
-    setUserInfo({id: '', username: '', nickname: ''});
+    setUserInfo({
+      id: '',
+      username: '',
+      nickname: '',
+      token: '',
+      loginStatus: false,
+      avatar: '',
+      menuList: []
+    });
     // 清空用户主题配置
     const el = document.documentElement;
     isDark.value = false;
