@@ -1,7 +1,7 @@
 import {InjectionKey} from 'vue';
 import {createStore, Store, useStore as baseUseStore} from 'vuex';
 // @ts-ignore
-import md5 from 'js-md5';
+import {md5} from 'js-md5';
 import {router} from "@/router";
 
 export interface State {
@@ -52,7 +52,7 @@ export function removeTabItem(id: string) {
 }
 
 export function addTabItem(tab: TabItem) {
-    tab.id = md5(tab.url);
+    tab.id = md5(tab.url+'');
     if (store.state.tabItems.length === 0) {
         store.state.tabItems.push(tab);
     } else {
