@@ -29,9 +29,9 @@
       <template v-slot:default>
         <el-table v-loading="loading" :data="tableData" @selection-change="handleSelectionChange">
           <el-table-column type="selection" width="55"/>
-          <el-table-column prop="title" label="封面" width="150">
+          <el-table-column prop="cover" label="封面" width="150">
             <template #default="scope">
-              <el-image style="width: 100px; height: 100px" :src="scope.row.cover" fit="fill"/>
+              <el-image style="width: 100px; height: 100px" :src="scope.row.cover" fit="fill" lazy/>
             </template>
           </el-table-column>
           <el-table-column prop="title" label="标题" width="150"/>
