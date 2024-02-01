@@ -16,7 +16,7 @@ public class RdUtils {
      * @return 指定默认字符串
      */
     public static String strNull(String s, String d) {
-        if (s == null || s.length() == 0) {
+        if (s == null || s.isEmpty()) {
             return d;
         }
         return s;

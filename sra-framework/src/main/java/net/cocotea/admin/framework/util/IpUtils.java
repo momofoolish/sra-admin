@@ -5,10 +5,11 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
- * 获取请求者ip
+ * IP获取工具类
  *
- * @author jwss
+ * @author CoCoTea
  * @date 2022-2-21 15:56:47
+ * @version v1.4.0
  */
 public class IpUtils {
     private final static String IP = "127.0.0.1";
@@ -18,13 +19,13 @@ public class IpUtils {
         String ipAddress;
         try {
             ipAddress = request.getHeader("x-forwarded-for");
-            if (ipAddress == null || ipAddress.length() == 0 || UNKNOWN.equalsIgnoreCase(ipAddress)) {
+            if (ipAddress == null || ipAddress.isEmpty() || UNKNOWN.equalsIgnoreCase(ipAddress)) {
                 ipAddress = request.getHeader("Proxy-Client-IP");
             }
-            if (ipAddress == null || ipAddress.length() == 0 || UNKNOWN.equalsIgnoreCase(ipAddress)) {
+            if (ipAddress == null || ipAddress.isEmpty() || UNKNOWN.equalsIgnoreCase(ipAddress)) {
                 ipAddress = request.getHeader("WL-Proxy-Client-IP");
             }
-            if (ipAddress == null || ipAddress.length() == 0 || UNKNOWN.equalsIgnoreCase(ipAddress)) {
+            if (ipAddress == null || ipAddress.isEmpty() || UNKNOWN.equalsIgnoreCase(ipAddress)) {
                 ipAddress = request.getRemoteAddr();
                 if (IP.equals(ipAddress)) {
                     // 根据网卡取本机配置的IP
