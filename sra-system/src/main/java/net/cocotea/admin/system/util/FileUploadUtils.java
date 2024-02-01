@@ -116,11 +116,11 @@ public class FileUploadUtils {
      * @return 真实路径
      */
     public static String createRealPath(String basePath, String fileName, String suffix) {
-        if (fileName == null || fileName.trim().length() == 0) {
+        if (fileName == null || fileName.trim().isEmpty()) {
             throw new RuntimeException("文件名为空");
         }
         String fullPath = basePath + createBaseDir() + fileName;
-        if (suffix == null || suffix.trim().length() == 0) {
+        if (suffix == null || suffix.trim().isEmpty()) {
             return fullPath;
         } else {
             return fullPath + CharConstant.POINT + suffix;
