@@ -41,8 +41,8 @@ public class AppBoot {
                 GlobalValue.getServerUrl()
         };
 
-        logger.info("CMS首页访问：{}/test/index || {}/cmsPage/index", urls[0], urls[1]);
-        logger.info("测试接口访问：{}/test/index || {}/test/index", urls[0], urls[1]);
+        logger.info("CMS首页访问：{}/system/test/index || {}/cmsPage/index", urls[0], urls[1]);
+        logger.info("测试接口访问：{}/system/test/index || {}/system/test/index", urls[0], urls[1]);
         DevEnableProperties devEnableProperties = (DevEnableProperties)context.getBean("devEnableProperties");
         logger.warn("强密码：{}, 权限缓存状态：{}", devEnableProperties.getStrongPassword(), devEnableProperties.getPermissionCache());
         GlobalValue.START_TIME = System.currentTimeMillis();

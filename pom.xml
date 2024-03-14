@@ -7,7 +7,7 @@
     <groupId>net.cocotea</groupId>
     <artifactId>admin</artifactId>
     <packaging>pom</packaging>
-    <version>1.4.1</version>
+    <version>1.4.2</version>
 
     <modules>
         <module>sra-bootstrap</module>
