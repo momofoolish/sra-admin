@@ -22,7 +22,7 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <!-- 内部模块版本 -->
-        <sra.version>1.4.1</sra.version>
+        <sra.version>1.4.2</sra.version>
         <!-- 外部框架版本 -->
         <spring-boot-starter.version>2.7.18</spring-boot-starter.version>
         <spring-boot-starter.plugin.version>2.7.4</spring-boot-starter.plugin.version>
