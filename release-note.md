@@ -3,6 +3,7 @@
 
 #### v1.4.2
 1. 修复test接口未放行问题
+2. JSON日期格式改成DatePattern.NORM_DATETIME_PATTERN
 
 
 #### v1.4.1
